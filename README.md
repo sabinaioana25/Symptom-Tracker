@@ -1,1 +1,1 @@
-# SymptomTrackerApp
+# SymptomTracker
