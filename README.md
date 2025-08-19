@@ -1,1 +1,1 @@
-# SymptomTracker
+# Symptom Tracker
