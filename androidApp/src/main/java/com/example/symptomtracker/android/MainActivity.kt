@@ -1,40 +1,36 @@
 package com.example.symptomtracker.android
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.symptomtracker.Greeting
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import com.example.symptomtracker.data.FakeSymptomRepository
+import com.example.symptomtracker.domain.usecase.SaveSymptomUseCase
+import com.example.symptomtracker.presentation.SymptomEntryViewModel
 
 class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MyApplicationTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    GreetingView(Greeting().greet())
-                }
-            }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    val repository = FakeSymptomRepository()
+    val useCase = SaveSymptomUseCase(repository)
+    val viewModel = SymptomEntryViewModel(useCase)
+
+    setContent {
+      val state by viewModel.uiState.collectAsState()
+
+      MaterialTheme {
+        SymptomEntryScreen(
+          viewModel = viewModel, uiState = state
+        ) {
+          Toast.makeText(
+            this, "Symptom saved!", Toast.LENGTH_SHORT
+          ).show()
         }
+      }
     }
-}
-
-@Composable
-fun GreetingView(text: String) {
-    Text(text = text)
-}
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        GreetingView("Hello, Android!")
-    }
+  }
 }
