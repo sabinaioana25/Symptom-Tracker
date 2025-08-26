@@ -7,21 +7,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.random.Random
 
 class SymptomEntryViewModel(
-  private val saveSymptomUseCase: SaveSymptomUseCase
+  private val saveSymptomUseCase: SaveSymptomUseCase,
 ) {
   private val coroutineScope = CoroutineScope(Dispatchers.Default)
   private val _uiState = MutableStateFlow(SymptomEntryState())
-
   val uiState: StateFlow<SymptomEntryState> = _uiState
 
   fun onNameChange(name: String) {
     _uiState.value = _uiState.value.copy(name = name)
   }
 
-  fun onSeverityChange(severity: Int) {
+  fun onSeverityChange(severity: Float) {
     _uiState.value = _uiState.value.copy(severity = severity)
   }
 
@@ -34,12 +34,15 @@ class SymptomEntryViewModel(
     val symptom = Symptom(
       id = Random.nextInt(10000).toString(),
       name = currentState.name,
-      severity = currentState.severity,
+      severity = currentState.severity.toInt(),
       notes = currentState.notes.takeIf { it.isNotBlank() }
     )
     coroutineScope.launch {
       saveSymptomUseCase(symptom)
-      onComplete()
+
+      withContext(Dispatchers.Main) {
+        onComplete()
+      }
     }
   }
 }
