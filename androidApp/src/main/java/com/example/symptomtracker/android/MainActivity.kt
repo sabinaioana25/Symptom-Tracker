@@ -8,6 +8,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.example.symptomtracker.data.FakeSymptomRepository
+import com.example.symptomtracker.data.InMemorySymptomRepository
+import com.example.symptomtracker.domain.repository.SymptomRepository
 import com.example.symptomtracker.domain.usecase.SaveSymptomUseCase
 import com.example.symptomtracker.presentation.SymptomEntryViewModel
 
@@ -17,7 +19,10 @@ class MainActivity : ComponentActivity() {
 
     val repository = FakeSymptomRepository()
     val useCase = SaveSymptomUseCase(repository)
-    val viewModel = SymptomEntryViewModel(useCase)
+    val symptomRepo = InMemorySymptomRepository()
+    val viewModel = SymptomEntryViewModel(
+      useCase,
+      symptomRepo)
 
     setContent {
       val state by viewModel.uiState.collectAsState()

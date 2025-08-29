@@ -1,5 +1,6 @@
 package com.example.symptomtracker.presentation
 
+import com.example.symptomtracker.data.InMemorySymptomRepository
 import com.example.symptomtracker.domain.model.Symptom
 import com.example.symptomtracker.domain.usecase.SaveSymptomUseCase
 import kotlinx.coroutines.CoroutineScope
@@ -12,10 +13,13 @@ import kotlin.random.Random
 
 class SymptomEntryViewModel(
   private val saveSymptomUseCase: SaveSymptomUseCase,
+  private val symptomRepository: InMemorySymptomRepository
 ) {
   private val coroutineScope = CoroutineScope(Dispatchers.Default)
   private val _uiState = MutableStateFlow(SymptomEntryState())
   val uiState: StateFlow<SymptomEntryState> = _uiState
+
+  val savedSymptoms: StateFlow<List<Symptom>> = symptomRepository.symptoms
 
   fun onNameChange(name: String) {
     _uiState.value = _uiState.value.copy(name = name)
