@@ -1,0 +1,17 @@
+CREATE TABLE Notes (
+  id TEXT PRIMARY KEY AUTOINCREMENT,
+  content TEXT NOT NULL
+);
+
+insertNote:
+INSERT INTO Notes(id,content)
+VALUES (?, ?);
+
+getAllNotes:
+SELECT * FROM Notes;
+
+deleteNote:
+DELETE FROM Notes WHERE id = ?;
+
+deleteAll:
+DELETE FROM Notes;

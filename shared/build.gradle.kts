@@ -6,6 +6,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.android.library)
+  alias(libs.plugins.compose.compiler)
+  alias(libs.plugins.sql.delight)
 }
 
 kotlin {
@@ -15,7 +17,7 @@ kotlin {
     compilations.all {
       compileTaskProvider.configure {
         compilerOptions {
-          jvmTarget.set(JvmTarget.JVM_1_8)
+          jvmTarget.set(JvmTarget.JVM_17)
         }
       }
     }
@@ -38,15 +40,26 @@ kotlin {
   }
 
   sourceSets {
+    androidMain.dependencies {
+      implementation(libs.sql.android.driver)
+    }
+
     commonMain.dependencies {
       //put your multiplatform dependencies here
       implementation(libs.atomic.fu)
       implementation(libs.kotlinx.coroutines.core)
+      implementation(libs.kotlinx.datetime)
+      implementation(libs.sql.runtime)
     }
+
     commonTest.dependencies {
       implementation(libs.kotlin.test)
       implementation(libs.io.kotest)
       implementation(libs.kotlinx.coroutines.test)
+    }
+
+    iosMain.dependencies {
+      implementation(libs.sql.native.driver)
     }
   }
 }
@@ -89,6 +102,14 @@ android {
     animationsDisabled = true
     unitTests.all {
       it.useJUnitPlatform()
+    }
+  }
+}
+
+sqldelight {
+  databases {
+    create("AppDatabase") {
+      packageName.set("com.example.symptomtracker.db")
     }
   }
 }
