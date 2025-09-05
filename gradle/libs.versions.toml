@@ -1,34 +1,47 @@
 [versions]
-activityCompose = "1.10.1"
-agp = "8.12.1"
-compose = "1.9.0"
-kotlin = "2.2.10"
-kotlinxCoroutinesCore = "1.10.2"
+agp = "8.7.2"
+atomicfu = "0.29.0"
+compose-bom = "2024.12.01"
+compose-multiplatform = "1.8.0"
+kotest = "6.0.1"
+kotlin = "2.1.0"
+kotlinx-coroutines-core = "1.10.2"
+kotlinx-datetime = "0.7.1"
+lifecycle = "2.9.3"
 material3 = "1.3.2"
 sqlDelight = "2.1.0"
 
+
 [libraries]
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
-atomic-fu = { module = "org.jetbrains.kotlinx:atomicfu", version = "0.29.0" }
-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
-io-kotest = { module = "io.kotest:kotest-assertions-core", version = "6.0.1" }
-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
-kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesCore" }
-kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.7.1" }
+# Android-specific Compose (using BOM)
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose" }
+androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose" }
+
+# Compose Multiplatform (use compose.* notation in build files)
+atomic-fu = { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "atomicfu" }
+
+# Kotlin libraries
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines-core" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-core" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
-sql-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref ="sqlDelight" }
+
+# Testing
+io-kotest = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+
+# SQLDelight
+sql-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" }
 sql-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
 sql-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sqlDelight" }
 
+
 [plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
-android-library = { id = "com.android.library", version.ref = "agp" }
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-sql-delight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
