@@ -1,4 +1,4 @@
-package com.example.symptomtracker.presentation
+package com.example.symptomtracker.presentation.note
 
 import com.example.symptomtracker.domain.model.Note
 import com.example.symptomtracker.domain.repository.NoteRepositoryImpl
@@ -29,8 +29,8 @@ class NoteViewModel(private val repository: NoteRepositoryImpl) {
   @OptIn(ExperimentalTime::class)
   fun saveNote() {
     val note = Note(
-        id = Clock.System.now().toEpochMilliseconds().toString(),
-        content = _text.value.trim()
+      id = Clock.System.now().toEpochMilliseconds(),
+      content = _text.value.trim()
     )
 
     if (note.content.isNotEmpty()) {

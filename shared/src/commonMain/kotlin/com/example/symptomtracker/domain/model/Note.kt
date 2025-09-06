@@ -1,6 +1,6 @@
 package com.example.symptomtracker.domain.model
 
 data class Note(
-  val id: String,
+  val id: Long,
   val content: String,
 )

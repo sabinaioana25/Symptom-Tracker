@@ -44,14 +44,13 @@ dependencies {
     implementation(projects.shared)
 
     // Use Compose BOM for Android Compose dependencies
-    val composeBom = platform(libs.compose.bom)
-    implementation(composeBom)
+    implementation(platform(libs.compose.bom))
 
     // Android Compose dependencies (no version needed due to BOM)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    debugImplementation("androidx.compose.ui:ui-tooling")
+    implementation("androidx.compose.ui:ui:1.10.0-alpha02")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.10.0-alpha02")
+    implementation("androidx.compose.material3:material3:1.5.0-alpha03")
+    debugImplementation("androidx.compose.ui:ui-tooling:1.10.0-alpha02")
 }

@@ -98,11 +98,11 @@ android {
 
   lint {
     abortOnError = true
-    targetSdk = 35
+    targetSdk = 36
   }
 
   testOptions {
-    targetSdk = 35
+    targetSdk = 36
     animationsDisabled = true
     unitTests.all {
       it.useJUnitPlatform()
