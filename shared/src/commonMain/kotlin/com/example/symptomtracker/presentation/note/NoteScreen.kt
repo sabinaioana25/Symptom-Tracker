@@ -52,6 +52,15 @@ fun NoteScreen(
 
     Spacer(modifier = Modifier.Companion.height(8.dp))
 
+    Button(
+      onClick = { (viewModel::deleteNote)(notes.last()) },
+      modifier = Modifier.Companion.fillMaxWidth()
+    ) {
+      Text("Delete Note")
+    }
+
+    Spacer(modifier = Modifier.Companion.height(8.dp))
+
     LazyColumn {
       items(notes) { note ->
         Text("• ${note.content}", style = MaterialTheme.typography.bodyMedium)

@@ -48,4 +48,11 @@ class NoteViewModel(private val repository: NoteRepositoryImpl) {
       _notes.update { allNotes }
     }
   }
+
+  fun deleteNote(note: Note) {
+    scope.launch {
+      repository.deleteSingleNote(note)
+      loadNotes()
+    }
+  }
 }
