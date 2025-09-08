@@ -4,8 +4,11 @@ import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-  alias(libs.plugins.kotlin.multiplatform)
-  alias(libs.plugins.android.library)
+  alias(libs.plugins.kotlinMultiplatform)
+  alias(libs.plugins.jetbrainsCompose)
+  alias(libs.plugins.compose.compiler)
+  alias(libs.plugins.androidLibrary)
+  alias(libs.plugins.sqlDelight)
 }
 
 kotlin {
@@ -15,7 +18,7 @@ kotlin {
     compilations.all {
       compileTaskProvider.configure {
         compilerOptions {
-          jvmTarget.set(JvmTarget.JVM_1_8)
+          jvmTarget.set(JvmTarget.JVM_17)
         }
       }
     }
@@ -38,15 +41,30 @@ kotlin {
   }
 
   sourceSets {
-    commonMain.dependencies {
-      //put your multiplatform dependencies here
-      implementation(libs.atomic.fu)
-      implementation(libs.kotlinx.coroutines.core)
+    androidMain.dependencies {
+      implementation(libs.sql.android.driver)
     }
+
+    commonMain.dependencies {
+      implementation(libs.kotlinx.coroutines.core)
+      implementation(libs.kotlinx.datetime)
+      implementation(libs.atomic.fu)
+      implementation(compose.runtime)
+      implementation(compose.foundation)
+      implementation(compose.material3)
+      implementation(compose.components.resources)
+      implementation(compose.ui)
+      implementation(libs.sql.runtime)
+    }
+
     commonTest.dependencies {
       implementation(libs.kotlin.test)
       implementation(libs.io.kotest)
       implementation(libs.kotlinx.coroutines.test)
+    }
+
+    iosMain.dependencies {
+      implementation(libs.sql.native.driver)
     }
   }
 }
@@ -80,15 +98,22 @@ android {
 
   lint {
     abortOnError = true
-    lintConfig = file("lint.xml")
-    targetSdk = 35
+    targetSdk = 36
   }
 
   testOptions {
-    targetSdk = 35
+    targetSdk = 36
     animationsDisabled = true
     unitTests.all {
       it.useJUnitPlatform()
+    }
+  }
+}
+
+sqldelight {
+  databases {
+    create("AppDatabase") {
+      packageName.set("com.example.symptomtracker.db")
     }
   }
 }

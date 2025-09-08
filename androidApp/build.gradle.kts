@@ -1,6 +1,7 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
 }
 
@@ -21,6 +22,7 @@ android {
     buildFeatures {
         compose = true
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -31,6 +33,7 @@ android {
             isMinifyEnabled = false
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -39,9 +42,15 @@ android {
 
 dependencies {
     implementation(projects.shared)
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.tooling.preview)
-    implementation(libs.compose.material3)
+
+    // Use Compose BOM for Android Compose dependencies
+    implementation(platform(libs.compose.bom))
+
+    // Android Compose dependencies (no version needed due to BOM)
     implementation(libs.androidx.activity.compose)
-    debugImplementation(libs.compose.ui.tooling)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation("androidx.compose.ui:ui:1.10.0-alpha02")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.10.0-alpha02")
+    implementation("androidx.compose.material3:material3:1.5.0-alpha03")
+    debugImplementation("androidx.compose.ui:ui-tooling:1.10.0-alpha02")
 }

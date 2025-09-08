@@ -1,7 +1,7 @@
 package com.example.symptomtracker
 
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import kotlin.test.DefaultAsserter.assertTrue
+import kotlin.test.Test
 
 class AndroidGreetingTest {
 
