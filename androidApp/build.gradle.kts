@@ -1,16 +1,17 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.googlePlayServices)
 }
 
 android {
     namespace = "com.example.symptomtracker.android"
-    compileSdk = 35
+    compileSdk = 36
     defaultConfig {
         applicationId = "com.example.symptomtracker.android"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
     }
@@ -42,5 +43,6 @@ dependencies {
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material3)
     implementation(libs.androidx.activity.compose)
+    implementation("com.google.gms:google-services:4.4.3")
     debugImplementation(libs.compose.ui.tooling)
 }

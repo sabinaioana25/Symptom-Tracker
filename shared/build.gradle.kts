@@ -29,17 +29,31 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+            implementation(project.dependencies.platform(libs.firebase.bom))
+            implementation(libs.firebase.analytics)
+            implementation(libs.firebase.auth)
+            implementation(libs.firebase.crashlytics)
+            implementation(libs.firebase.firestore)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+
+        iosMain {
+            dependencies {
+                implementation(project.dependencies.platform(libs.firebase.bom))
+                implementation(libs.firebase.analytics)
+                implementation(libs.firebase.auth)
+                implementation(libs.firebase.crashlytics)
+                implementation(libs.firebase.firestore)
+            }
         }
     }
 }
 
 android {
     namespace = "com.example.symptomtracker"
-    compileSdk = 35
+    compileSdk = 36
     defaultConfig {
         minSdk = 24
     }
