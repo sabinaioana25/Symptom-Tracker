@@ -34,6 +34,9 @@ kotlin {
             implementation(libs.firebase.auth)
             implementation(libs.firebase.crashlytics)
             implementation(libs.firebase.firestore)
+            implementation(libs.firebase.crashlytics)
+            implementation(libs.firebase.common)
+            implementation(libs.gitlive.firebase.crashlytics)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
