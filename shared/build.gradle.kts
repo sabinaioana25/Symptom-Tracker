@@ -43,23 +43,20 @@ kotlin {
   sourceSets {
     androidMain.dependencies {
       implementation(libs.sql.android.driver)
+      implementation(compose.ui)
+      implementation(compose.material3)
     }
 
     commonMain.dependencies {
+      implementation(libs.atomic.fu)
       implementation(libs.kotlinx.coroutines.core)
       implementation(libs.kotlinx.datetime)
-      implementation(libs.atomic.fu)
-      implementation(compose.runtime)
-      implementation(compose.foundation)
-      implementation(compose.material3)
-      implementation(compose.components.resources)
-      implementation(compose.ui)
       implementation(libs.sql.runtime)
     }
 
     commonTest.dependencies {
-      implementation(libs.kotlin.test)
       implementation(libs.io.kotest)
+      implementation(libs.kotlin.test)
       implementation(libs.kotlinx.coroutines.test)
     }
 

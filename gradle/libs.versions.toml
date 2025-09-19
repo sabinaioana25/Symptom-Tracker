@@ -4,24 +4,27 @@ atomicfu = "0.29.0"
 compose-bom = "2025.09.00"
 compose-multiplatform = "1.9.0"
 google-services = "4.4.3"
+firebase-bom = "34.3.0"
 kotest = "6.0.3"
 kotlin = "2.2.20"
 kotlinx-coroutines-core = "1.10.2"
 kotlinx-datetime = "0.7.1"
 lifecycle = "2.9.4"
 sqlDelight = "2.1.0"
+activityKtx = "1.11.0"
 
 
 [libraries]
 # Android-specific Compose (using BOM)
-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 activity-compose = { module = "androidx.activity:activity-compose" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose" }
-material3 = { module = "androidx.compose.material3:material3" }
-compose-ui = { module = "androidx.compose.ui:ui" }
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
+compose-components-resources = { module = "org.jetbrains.compose.components:components-resources" }
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose-multiplatform" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+material3 = { module = "androidx.compose.material3:material3" }
 
 # Compose Multiplatform (use compose.* notation in build files)
 atomic-fu = { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "atomicfu" }
@@ -35,11 +38,17 @@ kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotl
 # Testing
 io-kotest = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 
+# Firebase
+firebase-auth = { module = "com.google.firebase:firebase-auth-ktx", version = "23.2.1" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
+firebase-common = { module = "com.google.firebase:firebase-common-ktx", version = "21.0.0" }
+firebase-firestore = { module = "com.google.firebase:firebase-firestore-ktx", version = "25.1.4" }
+
 # SQLDelight
 sql-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" }
 sql-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
 sql-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sqlDelight" }
-
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

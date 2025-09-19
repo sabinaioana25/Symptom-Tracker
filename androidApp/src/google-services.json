@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:202258598479:android:7af8123af619a053e7b83a",
         "android_client_info": {
-          "package_name": "com.example.symptomtracker"
+          "package_name": "com.example.symptomtracker.android"
         }
       },
       "oauth_client": [],
