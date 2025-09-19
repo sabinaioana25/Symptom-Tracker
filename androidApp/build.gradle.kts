@@ -2,7 +2,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.googleServices)
 }
 
 kotlin {
@@ -47,10 +48,10 @@ dependencies {
     implementation(platform(libs.compose.bom))
 
     // Android Compose dependencies (no version needed due to BOM)
-    implementation(libs.androidx.activity.compose)
+    implementation(libs.activity.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation("androidx.compose.ui:ui:1.10.0-alpha02")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.10.0-alpha02")
-    implementation("androidx.compose.material3:material3:1.5.0-alpha03")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.10.0-alpha02")
+    implementation(libs.material3)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.tooling.preview)
+    debugImplementation(libs.compose.ui.tooling)
 }
