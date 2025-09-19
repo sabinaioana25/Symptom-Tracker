@@ -43,15 +43,26 @@ android {
 
 dependencies {
     implementation(projects.shared)
+    implementation(project(":shared"))
 
-    // Use Compose BOM for Android Compose dependencies
+
+  // Use Compose BOM for Android Compose dependencies
     implementation(platform(libs.compose.bom))
 
     // Android Compose dependencies (no version needed due to BOM)
     implementation(libs.activity.compose)
+    implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.material3)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.material3)
+
+    // Firebase dependencies
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.common)
+    implementation(libs.firebase.firestore)
+
     debugImplementation(libs.compose.ui.tooling)
 }

@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.MaterialTheme
 import com.example.symptomtracker.DatabaseDriverFactory
-import com.example.symptomtracker.MainScreen
 import com.example.symptomtracker.db.AppDatabase
 import com.example.symptomtracker.domain.repository.NoteRepositoryImpl
 import com.example.symptomtracker.presentation.note.NoteViewModel
