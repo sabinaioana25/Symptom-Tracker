@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import com.example.symptomtracker.DatabaseDriverFactory
 import com.example.symptomtracker.db.AppDatabase
 import com.example.symptomtracker.domain.repository.NoteRepositoryImpl
-import com.example.symptomtracker.presentation.note.NoteViewModel
+import com.example.symptomtracker.presentation.NoteViewModel
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {

@@ -18,7 +18,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.symptomtracker.presentation.note.NoteViewModel
+import com.example.symptomtracker.presentation.NoteViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

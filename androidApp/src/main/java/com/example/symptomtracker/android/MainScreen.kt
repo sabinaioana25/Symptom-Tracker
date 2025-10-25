@@ -8,7 +8,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 
-import com.example.symptomtracker.presentation.note.NoteViewModel
+import com.example.symptomtracker.presentation.NoteViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

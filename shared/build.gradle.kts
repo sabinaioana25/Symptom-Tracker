@@ -52,6 +52,9 @@ kotlin {
       implementation(libs.kotlinx.coroutines.core)
       implementation(libs.kotlinx.datetime)
       implementation(libs.sql.runtime)
+      implementation(compose.runtime)
+      implementation(compose.foundation)
+      implementation(compose.material3)
     }
 
     commonTest.dependencies {

@@ -1,4 +1,4 @@
-package com.example.symptomtracker.presentation.note
+package com.example.symptomtracker.presentation
 
 import com.example.symptomtracker.domain.model.Note
 import com.example.symptomtracker.domain.repository.NoteRepositoryImpl

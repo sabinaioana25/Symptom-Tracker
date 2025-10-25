@@ -12,6 +12,7 @@ kotlinx-datetime = "0.7.1"
 lifecycle = "2.9.4"
 sqlDelight = "2.1.0"
 activityKtx = "1.11.0"
+firebaseDatabaseKtx = "22.0.1"
 
 
 [libraries]
@@ -49,6 +50,7 @@ sql-android-driver = { module = "app.cash.sqldelight:android-driver", version.re
 sql-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
 sql-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sqlDelight" }
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
+firebase-database-ktx = { group = "com.google.firebase", name = "firebase-database-ktx", version.ref = "firebaseDatabaseKtx" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
