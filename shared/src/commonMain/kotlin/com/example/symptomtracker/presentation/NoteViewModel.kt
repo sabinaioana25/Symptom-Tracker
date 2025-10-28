@@ -1,7 +1,7 @@
 package com.example.symptomtracker.presentation
 
 import com.example.symptomtracker.domain.model.Note
-import com.example.symptomtracker.domain.repository.NoteRepositoryImpl
+import com.example.symptomtracker.domain.repository.NotesRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 
-class NoteViewModel(private val repository: NoteRepositoryImpl) {
+class NoteViewModel(private val repository: NotesRepository) {
   private val scope = CoroutineScope(Dispatchers.Default)
   private val _text = MutableStateFlow("")
   val text: StateFlow<String> = _text
