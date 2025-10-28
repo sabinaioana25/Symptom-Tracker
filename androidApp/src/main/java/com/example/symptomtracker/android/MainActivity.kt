@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.MaterialTheme
 import com.example.symptomtracker.DatabaseDriverFactory
+import com.example.symptomtracker.android.data.FirebaseNotesRepository
 import com.example.symptomtracker.db.AppDatabase
 import com.example.symptomtracker.domain.repository.NoteRepositoryImpl
 import com.example.symptomtracker.presentation.NoteViewModel
@@ -16,8 +17,8 @@ class MainActivity : ComponentActivity() {
     enableEdgeToEdge()
 
     val databaseDriverFactory = DatabaseDriverFactory(this)
-    val repository = NoteRepositoryImpl(AppDatabase(databaseDriverFactory.createDriver()))
-    val viewModel = NoteViewModel(repository)
+//    val repository = NoteRepositoryImpl(AppDatabase(databaseDriverFactory.createDriver()))
+    val viewModel = NoteViewModel(FirebaseNotesRepository())
 
     setContent {
       MaterialTheme {
