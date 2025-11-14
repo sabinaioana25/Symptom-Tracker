@@ -9,10 +9,23 @@
       "client_info": {
         "mobilesdk_app_id": "1:202258598479:android:7af8123af619a053e7b83a",
         "android_client_info": {
-          "package_name": "com.example.symptomtracker.android"
+          "package_name": "com.example.symptomtracker"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "202258598479-943odn20cl1subipns7lgjlv82dko7j6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.symptomtracker",
+            "certificate_hash": "0d81b39cfb0ab14f95f27f66dac9b9b0550567ed"
+          }
+        },
+        {
+          "client_id": "202258598479-jii4q531jemh129kkarmcqad9j4mcq2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAnBUmHQQ9MJiuNbmoc5ZSjlxLMSkhnEgI"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202258598479-jii4q531jemh129kkarmcqad9j4mcq2m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

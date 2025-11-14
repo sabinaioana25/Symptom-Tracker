@@ -24,6 +24,7 @@ import com.example.symptomtracker.presentation.NoteViewModel
 @Composable
 fun NoteScreen(
     viewModel: NoteViewModel,
+    onProfileClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val input by viewModel.text.collectAsState()
@@ -39,19 +40,19 @@ fun NoteScreen(
             value = input,
             onValueChange = viewModel::onTextChange,
             placeholder = { Text("Enter your symptom") },
-            modifier = Modifier.Companion.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.Companion.height(8.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         Button(
             onClick = viewModel::saveNote,
-            modifier = Modifier.Companion.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text("Save Note")
         }
 
-        Spacer(modifier = Modifier.Companion.height(8.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         Button(
             onClick = {
@@ -60,17 +61,26 @@ fun NoteScreen(
                 }
             },
             enabled = notes.isNotEmpty(),
-            modifier = Modifier.Companion.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text("Delete Last Note")
         }
 
-        Spacer(modifier = Modifier.Companion.height(8.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         LazyColumn {
             items(notes) { note ->
-                Text("• ${note.content}", style = MaterialTheme.typography.bodyMedium)
+                Text("- ${note.content}", style = MaterialTheme.typography.bodyMedium)
             }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Button(
+            onClick = onProfileClick,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("My Profile")
         }
     }
 }

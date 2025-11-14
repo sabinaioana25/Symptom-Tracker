@@ -14,7 +14,7 @@ android {
     namespace = "com.example.symptomtracker.android"
     compileSdk = 36
     defaultConfig {
-        applicationId = "com.example.symptomtracker.android"
+        applicationId = "com.example.symptomtracker"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -56,13 +56,18 @@ dependencies {
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.material3)
+    implementation(libs.compose.navigation)
 
     // Firebase dependencies
     implementation(platform(libs.firebase.bom))
     implementation(libs.androidx.activity.ktx)
+    implementation(libs.android.credentials)
+    implementation(libs.android.credentials.play.services)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.common)
     implementation(libs.firebase.firestore)
+    implementation(libs.google.id)
+    implementation(libs.play.services.auth)
 
     debugImplementation(libs.compose.ui.tooling)
 }
