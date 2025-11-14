@@ -1,10 +1,8 @@
 package com.example.symptomtracker.android.data
 
-import com.example.symptomtracker.db.Notes
 import com.example.symptomtracker.domain.model.Note
 import com.example.symptomtracker.domain.repository.NotesRepository
 import com.google.firebase.Firebase
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 import kotlinx.coroutines.tasks.await
 
