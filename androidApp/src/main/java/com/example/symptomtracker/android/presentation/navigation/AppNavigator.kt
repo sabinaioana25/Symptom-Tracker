@@ -98,7 +98,7 @@ fun AppNavigator(
               "Signed out",
               Toast.LENGTH_LONG
             ).show()
-            navController.popBackStack()
+            navController.navigate(Route.SIGN_IN)
           }
         },
         onGoToNotes = { navController.navigate(Route.NOTE) }

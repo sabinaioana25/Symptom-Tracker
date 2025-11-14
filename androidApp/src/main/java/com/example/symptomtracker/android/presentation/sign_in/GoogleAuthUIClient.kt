@@ -91,11 +91,11 @@ class GoogleAuthUIClient(
       .setGoogleIdTokenRequestOptions(
         BeginSignInRequest.GoogleIdTokenRequestOptions.Builder()
           .setSupported(true)
-          .setFilterByAuthorizedAccounts(false)
+          .setFilterByAuthorizedAccounts(true)
           .setServerClientId(serverClientId)
           .build()
       )
-      .setAutoSelectEnabled(true)
+      .setAutoSelectEnabled(false)
       .build()
   }
 }
